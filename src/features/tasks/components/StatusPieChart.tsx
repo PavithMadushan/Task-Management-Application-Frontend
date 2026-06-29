@@ -20,8 +20,7 @@ const STATUS_LABELS: Record<TaskStatus, string> = {
   Open: 'To do',
   'In Progress': 'In Progress',
   Testing: 'Testing',
-  Done: 'Done',
-  Overdue: 'Overdue',
+  Done: 'Done',  
 };
 
 export const StatusPieChart: React.FC<StatusPieChartProps> = ({ tasks }) => {
@@ -29,8 +28,7 @@ export const StatusPieChart: React.FC<StatusPieChartProps> = ({ tasks }) => {
     Open: 0,
     'In Progress': 0,
     Testing: 0,
-    Done: 0,
-    Overdue: 0,
+    Done: 0,    
   };
 
   tasks.forEach((t) => {
@@ -72,10 +70,10 @@ export const StatusPieChart: React.FC<StatusPieChartProps> = ({ tasks }) => {
             ))}
           </Pie>
           <Tooltip
-            formatter={(value: number, _name: string, entry: any) => [
-              value,
-              entry.payload.name,
-            ]}
+            formatter={(value, _name, entry) => [
+  (value as number) ?? 0,
+  entry?.payload?.label ?? _name ?? '',
+]}
           />
           <Legend
             layout="vertical"

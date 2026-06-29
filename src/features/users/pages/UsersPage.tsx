@@ -39,10 +39,9 @@ export const UsersPage: React.FC = () => {
     }
   };
 
-  const handleEditUser = (user: User) => {
-    setEditError(null);
-    setEditingUser(user);
-  };
+  const handleEditUser = async (user: User) => {
+  setEditingUser(user);
+};
 
   const handleEditModalClose = () => {
     setEditError(null);
@@ -64,18 +63,13 @@ export const UsersPage: React.FC = () => {
     }
   };
 
-  const handleDeleteUser = async (user: { id: number; name?: string }) => {
-    const confirmed = window.confirm(
-      `Are you sure you want to delete ${user.name ?? 'this user'}?`,
-    );
-    if (!confirmed) return;
-
-    try {
-      await deleteUser(user.id);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  const handleDeleteUser = async (user: User) => {
+  try {
+    await deleteUser(Number(user.id));
+  } catch (err) {
+    console.error('Failed to delete user', err);
+  }
+};
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>

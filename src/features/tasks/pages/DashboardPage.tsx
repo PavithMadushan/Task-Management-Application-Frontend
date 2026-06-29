@@ -4,7 +4,7 @@ import { PriorityPieChart } from '@/features/tasks/components/PriorityPieChart';
 import { useTasks } from '@/features/tasks/hooks/useTasks';
 import type { TaskStatus } from '@/types/common';
 
-const STATUS_ORDER: TaskStatus[] = ['Open', 'In Progress', 'Testing', 'Done', 'Overdue'];
+// const STATUS_ORDER: TaskStatus[] = ['Open', 'In Progress', 'Testing', 'Done'];
 
 export const DashboardPage = () => {
   const { tasks, loading, error } = useTasks(); // already scoped by backend to current user
@@ -15,8 +15,7 @@ export const DashboardPage = () => {
     Open: 0,
     'In Progress': 0,
     Testing: 0,
-    Done: 0,
-    Overdue: 0,
+    Done: 0,    
   };
 
   tasks.forEach((t) => {
@@ -27,7 +26,7 @@ export const DashboardPage = () => {
   const inProgressCount = counts['In Progress'];
   const testingCount = counts.Testing;
   const doneCount = counts.Done;
-  const overdueCount = counts.Overdue;
+  const overdueCount = /*counts.Overdue */ 0; 
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>

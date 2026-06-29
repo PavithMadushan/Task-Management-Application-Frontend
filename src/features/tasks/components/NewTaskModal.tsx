@@ -31,8 +31,8 @@ export const NewTaskModal: React.FC<NewTaskModalProps> = ({
   const [priority, setPriority] = useState<TaskPriority>('Medium');
   const [dueDate, setDueDate] = useState('');
   const [assignedTo, setAssignedTo] = useState<number>(
-    currentUser ? currentUser.id : users[0]?.id ?? 0,
-  );
+  Number(currentUser?.id ?? users[0]?.id ?? 0),
+);
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {

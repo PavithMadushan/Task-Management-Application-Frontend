@@ -18,7 +18,7 @@ export const EditUserModal: React.FC<EditUserModalProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim()) return;
-    onSave(user.id, { name, role });
+    onSave(Number(user.id), { name, role });
   };
 
   return (

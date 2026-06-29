@@ -18,7 +18,7 @@ export const TaskBoard: React.FC = () => {
     tasks.filter((t) => t.status === status);
 
   const getAssignedUser = (assignedToId: number | null | undefined) =>
-    users.find((u) => u.id === assignedToId);
+  users.find((u) => Number(u.id) === assignedToId);
 
   const handleEditSave = async (updates: {
     title: string;
